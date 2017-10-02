@@ -1,6 +1,11 @@
 
-import { NativeModules } from 'react-native';
+import { NativeModules, View } from 'react-native';
 
 const { RNZebraScanner } = NativeModules;
 
-export default RNZebraScanner;
+export default class ZebraScanner {
+    render() {
+        <View>
+        </View>
+    }
+}
