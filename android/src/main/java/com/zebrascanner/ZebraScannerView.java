@@ -130,6 +130,10 @@ public class ZebraScannerView extends ViewGroup {
         }
     };
 
+    private int getDeviceOrientation(Context context) {
+        return ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getOrientation();
+    }
+
 
     private void processScanResult(String message)
     {
