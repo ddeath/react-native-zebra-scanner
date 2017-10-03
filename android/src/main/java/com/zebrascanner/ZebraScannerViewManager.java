@@ -21,4 +21,9 @@ public class ZebraScannerViewManager extends SimpleViewManager<ZebraScannerView>
     public ZebraScannerView createViewInstance(ThemedReactContext context) {
         return new ZebraScannerView(context);
     }
+
+    @ReactProp(name = "aspect")
+    public void setAspect(ZebraScannerView view, int aspect) {
+        
+    }
 }
