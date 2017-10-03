@@ -50,7 +50,7 @@ public class ZebraScannerView extends ViewGroup {
 
         mPreview = new CameraPreview(context, mCamera, previewCb,
                 autoFocusCB);
-        this.layout.addView(mPreview);
+        this.addView(mPreview);
     }
 
     @Override
