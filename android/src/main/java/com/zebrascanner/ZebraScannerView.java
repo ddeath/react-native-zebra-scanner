@@ -32,12 +32,13 @@ public class ZebraScannerView extends ViewGroup {
     private boolean invalid_code = false;
 
     private final OrientationEventListener _orientationListener;
-    private ZebraScannerViewFinder _viewFinder = null;
+    private final Context zebraContext;
 
     public ZebraScannerView(Context context) {
         super(context);
 
         setRequestedOrientation(getDeviceOrientation(context));
+        this.zebraContext = context;
 
         autoFocusHandler = new Handler();
         mCamera = getCameraInstance();
@@ -47,10 +48,15 @@ public class ZebraScannerView extends ViewGroup {
         scanner.setConfig(0, Config.X_DENSITY, 3);
         scanner.setConfig(0, Config.Y_DENSITY, 3);
 
-        mPreview = new CameraPreview(ZebraScannerView.this, mCamera, previewCb,
+        mPreview = new CameraPreview(context, mCamera, previewCb,
                 autoFocusCB);
         FrameLayout preview = new FrameLayout();
         preview.addView(mPreview);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        this.layout(left, top, right, bottom);
     }
 
     /**
