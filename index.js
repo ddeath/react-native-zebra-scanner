@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NativeModules, View, Text } from 'react-native';
+import { NativeModules, View, Text, requireNativeComponent } from 'react-native';
 
 const { ZebraScanner } = NativeModules;
 
