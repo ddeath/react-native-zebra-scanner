@@ -49,6 +49,7 @@ public class ZebraScannerView extends FrameLayout {
         mPreview = new CameraPreview(context, mCamera, previewCb,
                 autoFocusCB);
         this.addView(mPreview);
+        mCamera.startPreview();
     }
 
     /**
