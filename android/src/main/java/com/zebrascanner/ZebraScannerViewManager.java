@@ -9,7 +9,7 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ZebraScannerViewManager extends SimpleViewManager<ZebraScannerView> {
+public class ZebraScannerViewManager extends ViewGroupManager<ZebraScannerView> {
     private static final String REACT_CLASS = "ZebraScanner";
 
     @Override

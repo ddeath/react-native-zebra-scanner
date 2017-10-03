@@ -20,7 +20,7 @@ import net.sourceforge.zbar.SymbolSet;
 
 import java.util.List;
 
-public class ZebraScannerView extends ViewGroup {
+public class ZebraScannerView extends FrameLayout {
     private Camera mCamera;
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
@@ -49,11 +49,6 @@ public class ZebraScannerView extends ViewGroup {
         mPreview = new CameraPreview(context, mCamera, previewCb,
                 autoFocusCB);
         this.addView(mPreview);
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        this.layout(left, top, right, bottom);
     }
 
     /**
