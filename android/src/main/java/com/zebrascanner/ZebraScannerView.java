@@ -31,7 +31,6 @@ public class ZebraScannerView extends ViewGroup {
     private boolean previewing = true;
     private boolean invalid_code = false;
 
-    private final OrientationEventListener _orientationListener;
     private final Context zebraContext;
 
     public ZebraScannerView(Context context) {
