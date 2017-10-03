@@ -8,9 +8,9 @@ const Scanner = requireNativeComponent('ZebraScanner', Zebra, {});
 export default class Zebra extends Component {
   render() {
     return (
-      <View>
-        <Text>Hey!</Text>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
         <Scanner />
+        <Text>Hey!</Text>
       </View>
     );
   }
