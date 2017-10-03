@@ -133,7 +133,7 @@ public class ZebraScannerView extends ViewGroup {
 
     private void processScanResult(String message)
     {
-        Log.i(message);
+        Log.i(message, message);
     }
 
     private void restartScanner()
