@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NativeModules, View, Text, requireNativeComponent } from 'react-native';
 
-const { ZebraScanner } = NativeModules;
+const { ZebraScannerModule } = NativeModules;
 
 const Scanner = requireNativeComponent('ZebraScanner', Zebra, {});
 

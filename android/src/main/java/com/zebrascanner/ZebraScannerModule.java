@@ -17,6 +17,6 @@ public class ZebraScannerModule extends ReactContextBaseJavaModule {
 
   @Override
   public String getName() {
-    return "ZebraScanner";
+    return "ZebraScannerModule";
   }
 }
