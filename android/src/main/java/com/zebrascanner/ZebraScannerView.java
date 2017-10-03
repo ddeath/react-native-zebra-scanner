@@ -37,7 +37,6 @@ public class ZebraScannerView extends ViewGroup {
     public ZebraScannerView(Context context) {
         super(context);
 
-        setRequestedOrientation(getDeviceOrientation(context));
         this.zebraContext = context;
 
         autoFocusHandler = new Handler();
