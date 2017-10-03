@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { NativeModules, View } from 'react-native';
+import { NativeModules, View, Text } from 'react-native';
 
-const { RNZebraScanner } = NativeModules;
+const { ZebraScanner } = NativeModules;
 
-export default class ZebraScanner extends Component {
+export default class Zebra extends Component {
   render() {
     return (
       <View>
+        <Text>Hey!</Text>
       </View>
     );
   }
