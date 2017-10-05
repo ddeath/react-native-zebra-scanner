@@ -16,9 +16,9 @@ const Scanner = requireNativeComponent('ZebraScanner', Zebra, {nativeOnly: {
 export default class Zebra extends Component {
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <Scanner style={{ flex: 1, height: 200}}/>
-      </View>
+      <Scanner style={{ flex: 1 }}>
+        {children}
+      </Scanner>
     );
   }
 }

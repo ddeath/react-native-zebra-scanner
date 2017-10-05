@@ -27,6 +27,8 @@ public class ZebraScannerView extends ViewGroup {
 
     private ImageScanner scanner;
 
+    private Callback onCodeRead = null;
+
     private boolean barcodeScanned = false;
     private boolean previewing = true;
     private boolean invalid_code = false;
@@ -74,6 +76,10 @@ public class ZebraScannerView extends ViewGroup {
     @Override
     protected void onDetachedFromWindow() {
         releaseCamera();
+    }
+
+    public void setOnCodeRead(final Callback callback) {
+        this.onCodeRead = callback;
     }
 
     /**
@@ -155,7 +161,9 @@ public class ZebraScannerView extends ViewGroup {
 
     private void processScanResult(String message)
     {
-        Log.i(message, message);
+        if (this.onCodeRead !== null) {
+            this.onCodeRead.invoke(message);
+        }
     }
 
     private void restartScanner()
