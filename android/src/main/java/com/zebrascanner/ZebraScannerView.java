@@ -53,6 +53,15 @@ public class ZebraScannerView extends ViewGroup {
     }
 
     @Override
+    public void onViewAdded(View child) {
+        if (this.mPreview == child) return;
+        // remove and readd view to make sure it is in the back.
+        // @TODO figure out why there was a z order issue in the first place and fix accordingly.
+        this.removeView(this.mPreview);
+        this.addView(this.mPreview, 0);
+    }
+
+    @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         
     }
