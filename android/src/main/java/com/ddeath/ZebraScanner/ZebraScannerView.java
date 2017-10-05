@@ -64,7 +64,8 @@ public class ZebraScannerView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        
+        this.mPreview.layout(0, 0, 200, 200);
+        this.postInvalidate(this.getLeft(), this.getTop(), this.getRight(), this.getBottom());
     }
 
     /**
