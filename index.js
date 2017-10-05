@@ -3,11 +3,15 @@ import { NativeModules, View, Text, requireNativeComponent } from 'react-native'
 
 const { ZebraScannerModule } = NativeModules;
 
-var iface = {
-  name: 'ZebraScanner',
-  propTypes: {},
-};
-const Scanner = requireNativeComponent('ZebraScanner', Zebra, iface);
+const Scanner = requireNativeComponent('ZebraScanner', Zebra, {nativeOnly: {
+  testID: true,
+  renderToHardwareTextureAndroid: true,
+  accessibilityLabel: true,
+  importantForAccessibility: true,
+  accessibilityLiveRegion: true,
+  accessibilityComponentType: true,
+  onLayout: true
+}});
 
 export default class Zebra extends Component {
   render() {
