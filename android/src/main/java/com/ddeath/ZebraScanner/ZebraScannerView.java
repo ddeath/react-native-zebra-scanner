@@ -64,8 +64,8 @@ public class ZebraScannerView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        float width = right - left;
-        float height = bottom - top;
+        int width = right - left;
+        int height = bottom - top;
 
         this.mPreview.layout(0, 0, width, height);
         this.postInvalidate(this.getLeft(), this.getTop(), this.getRight(), this.getBottom());
