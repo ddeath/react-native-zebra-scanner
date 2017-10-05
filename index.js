@@ -18,7 +18,6 @@ export default class Zebra extends Component {
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <Scanner style={{ flex: 1, height: 200}}/>
-        <Text>Hey!</Text>
       </View>
     );
   }
