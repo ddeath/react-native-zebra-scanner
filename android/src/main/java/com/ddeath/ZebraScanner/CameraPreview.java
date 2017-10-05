@@ -22,20 +22,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         previewCallback = previewCb;
         autoFocusCallback = autoFocusCb;
 
-        /*
-         * Set camera to continuous focus if supported, otherwise use
-         * software auto-focus. Only works for API level >=9.
-         */
-        Camera.Parameters parameters = camera.getParameters();
-        for (String f : parameters.getSupportedFocusModes()) {
-            if (f == Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE) {
-                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-                mCamera.setParameters(parameters);
-                autoFocusCallback = null;
-                break;
-            }
-        }
-
         Log.i("triing", "triing");
 
         // Install a SurfaceHolder.Callback so we get notified when the
