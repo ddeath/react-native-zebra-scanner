@@ -1,5 +1,4 @@
-
-package com.zebrascanner;
+package com.ddeath.ZebraScanner;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.zebrascanner;
+package com.ddeath.ZebraScanner;
 
 import android.support.annotation.Nullable;
 

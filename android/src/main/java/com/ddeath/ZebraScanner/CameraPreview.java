@@ -1,4 +1,4 @@
-package com.zebrascanner;
+package com.ddeath.ZebraScanner;
 
 import android.content.Context;
 import android.hardware.Camera;
