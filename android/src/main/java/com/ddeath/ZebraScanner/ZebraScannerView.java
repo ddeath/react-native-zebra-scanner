@@ -161,7 +161,7 @@ public class ZebraScannerView extends ViewGroup {
 
     private void processScanResult(String message)
     {
-        if (this.onCodeRead !== null) {
+        if (this.onCodeRead != null) {
             this.onCodeRead.invoke(message);
         }
     }
