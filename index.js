@@ -3,7 +3,7 @@ import { NativeModules, View, Text, requireNativeComponent } from 'react-native'
 
 const { ZebraScannerModule } = NativeModules;
 
-const Scanner = requireNativeComponent('ZebraScanner', Zebra, {nativeOnly: {
+const Scanner = requireNativeComponent('ZebraScannerView', Zebra, {nativeOnly: {
   testID: true,
   renderToHardwareTextureAndroid: true,
   accessibilityLabel: true,
