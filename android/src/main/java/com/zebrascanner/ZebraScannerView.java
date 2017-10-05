@@ -45,10 +45,11 @@ public class ZebraScannerView extends ViewGroup {
         scanner = new ImageScanner();
         scanner.setConfig(0, Config.X_DENSITY, 3);
         scanner.setConfig(0, Config.Y_DENSITY, 3);
+        
 
         mPreview = new CameraPreview(context, mCamera, previewCb,
                 autoFocusCB);
-        addView(mPreview);
+        addView(mPreview, 200, 200);
         mCamera.startPreview();
     }
 
