@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.uimanager.*;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
 import java.util.List;

@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.FrameLayout;
 
+import com.facebook.react.bridge.Callback;
+
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
