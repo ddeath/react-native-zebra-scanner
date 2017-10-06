@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.bridge.ReactContext;
 
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
