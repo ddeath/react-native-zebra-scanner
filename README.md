@@ -1,6 +1,8 @@
 
 # react-native-zebra-scanner
 
+WIP - only android so far
+
 ## Getting started
 
 `$ npm install react-native-zebra-scanner --save`
