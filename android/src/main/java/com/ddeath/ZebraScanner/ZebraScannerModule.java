@@ -7,15 +7,15 @@ import com.facebook.react.bridge.Callback;
 
 public class ZebraScannerModule extends ReactContextBaseJavaModule {
 
-  private final ReactApplicationContext reactContext;
+  private static ReactApplicationContext _reactContext;
 
   public ZebraScannerModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    this.reactContext = reactContext;
+    _reactContext = reactContext;
   }
 
   public static ReactApplicationContext getReactContextSingleton() {
-    return reactContext;
+    return _reactContext;
   }
 
   @Override
