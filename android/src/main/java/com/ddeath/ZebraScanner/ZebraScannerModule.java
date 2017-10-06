@@ -14,6 +14,10 @@ public class ZebraScannerModule extends ReactContextBaseJavaModule {
     this.reactContext = reactContext;
   }
 
+  public static ReactApplicationContext getReactContextSingleton() {
+    return reactContext;
+  }
+
   @Override
   public String getName() {
     return "ZebraScannerModule";
