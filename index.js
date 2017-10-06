@@ -42,9 +42,10 @@ export default class Zebra extends Component {
   }
 
   render() {
+    const { children } = this.props;
     return (
       <Scanner style={{ flex: 1 }}>
-        {children ? children : null}
+        {children}
       </Scanner>
     );
   }
