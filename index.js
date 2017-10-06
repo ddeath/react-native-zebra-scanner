@@ -44,7 +44,7 @@ export default class Zebra extends Component {
   render() {
     return (
       <Scanner style={{ flex: 1 }}>
-        {children}
+        {children ? children : null}
       </Scanner>
     );
   }
