@@ -177,9 +177,5 @@ public class ZebraScannerView extends ViewGroup {
     }
 
 
-    private void processScanResult(String message)
-    {
-        ReactContext reactContext = ZebraScannerModule.getReactContextSingleton();
-        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onCodeReadAndroid", message);
-    }
+    
 }
