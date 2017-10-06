@@ -30,6 +30,6 @@ public class ZebraScannerViewManager extends ViewGroupManager<ZebraScannerView> 
 
     @ReactProp(name = "resumeScanOnTouch")
     public void setResumeScanOnTouch(ZebraScannerView view, boolean resumeScanOnTouch) {
-        view.setResumeScanOnTouch(resumeOnTouch);
+        view.setResumeScanOnTouch(resumeScanOnTouch);
     }
 }

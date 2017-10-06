@@ -145,7 +145,7 @@ public class ZebraScannerView extends ViewGroup {
             int result = scanner.scanImage(barcode);
 
             if (result != 0) {
-                if (this.pauseOnCodeScan) {
+                if (pauseOnCodeScan) {
                     previewing = false;
                     mCamera.setPreviewCallback(null);
                     mCamera.stopPreview();
