@@ -79,10 +79,12 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     }
 
-    public onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
         if (resumeScanOnTouch) {
             restartScanner();
         }
+
+        return true;
     }
 
     public void setResumeScanOnTouch(boolean resumeScanOnTouch) {
