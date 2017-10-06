@@ -22,4 +22,14 @@ public class ZebraScannerViewManager extends ViewGroupManager<ZebraScannerView> 
     public ZebraScannerView createViewInstance(ThemedReactContext context) {
         return new ZebraScannerView(context);
     }
+
+    @ReactProp(name = "pauseOnCodeScan")
+    public void setPauseOnCodeScan(ZebraScannerView view, boolean pauseOnCodeScan) {
+        view.setPauseOnCodeScan(pauseOnCodeScan);
+    }
+
+    @ReactProp(name = "resumeScanOnTouch")
+    public void setResumeScanOnTouch(ZebraScannerView view, boolean resumeScanOnTouch) {
+        view.setResumeScanOnTouch(resumeOnTouch);
+    }
 }

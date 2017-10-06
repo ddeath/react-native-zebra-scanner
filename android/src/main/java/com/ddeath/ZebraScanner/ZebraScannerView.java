@@ -33,6 +33,8 @@ public class ZebraScannerView extends ViewGroup {
     private boolean barcodeScanned = false;
     private boolean previewing = true;
     private boolean invalid_code = false;
+    private boolean pauseOnCodeScan = true;
+    private boolean resumeScanOnTouch = true;
 
     private final Context zebraContext;
 
@@ -79,6 +81,24 @@ public class ZebraScannerView extends ViewGroup {
         releaseCamera();
     }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent event)
+    {
+        if (this.resumeScanOnTouch && this.mPreview == view) {
+            restartScanner();
+        }
+
+        return true;
+    }
+
+    public void setPauseOnCodeScan(boolean pauseOnCodeScan) {
+        this.pauseOnCodeScan = pauseOnCodeScan;
+    }
+
+    public void setResumeScanOnTouch(boolean resumeScanOnTouch) {
+        this.resumeScanOnTouch = resumeScanOnTouch;
+    }
+
     /**
      * A safe way to get an instance of the Camera object.
      */
@@ -115,32 +135,32 @@ public class ZebraScannerView extends ViewGroup {
     };
 
     Camera.PreviewCallback previewCb = new Camera.PreviewCallback() {
-                public void onPreviewFrame(byte[] data, Camera camera) {
-        Camera.Parameters parameters = camera.getParameters();
-        Camera.Size size = parameters.getPreviewSize();
+        public void onPreviewFrame(byte[] data, Camera camera) {
+            Camera.Parameters parameters = camera.getParameters();
+            Camera.Size size = parameters.getPreviewSize();
 
-        Image barcode = new Image(size.width, size.height, "Y800");
-        barcode.setData(data);
+            Image barcode = new Image(size.width, size.height, "Y800");
+            barcode.setData(data);
 
-        int result = scanner.scanImage(barcode);
+            int result = scanner.scanImage(barcode);
 
-        if (result != 0) {
-            previewing = false;
-            mCamera.setPreviewCallback(null);
-            mCamera.stopPreview();
+            if (result != 0) {
+                if (this.pauseOnCodeScan) {
+                    previewing = false;
+                    mCamera.setPreviewCallback(null);
+                    mCamera.stopPreview();
+                }
 
-            SymbolSet syms = scanner.getResults();
-            for (Symbol sym : syms) {
-                Log.i("<<<<<<Asset Code>>>>> ",
-                        "<<<<Bar Code>>> " + sym.getData());
-                String scanResult = sym.getData().trim();
+                SymbolSet syms = scanner.getResults();
+                for (Symbol sym : syms) {
+                    String scanResult = sym.getData().trim();
 
-                processScanResult(scanResult);
-                barcodeScanned = true;
+                    processScanResult(scanResult);
+                    barcodeScanned = true;
 
-                break;
+                    break;
+                }
             }
-        }
         }
     };
 

@@ -22,8 +22,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         previewCallback = previewCb;
         autoFocusCallback = autoFocusCb;
 
-        Log.i("triing", "triing");
-
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
         mHolder = getHolder();
