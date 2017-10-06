@@ -81,16 +81,6 @@ public class ZebraScannerView extends ViewGroup {
         releaseCamera();
     }
 
-    @Override
-    public boolean onTouch(View view, MotionEvent event)
-    {
-        if (this.resumeScanOnTouch && this.mPreview == view) {
-            restartScanner();
-        }
-
-        return true;
-    }
-
     public void setPauseOnCodeScan(boolean pauseOnCodeScan) {
         this.pauseOnCodeScan = pauseOnCodeScan;
     }
