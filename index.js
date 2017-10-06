@@ -1,19 +1,46 @@
 import React, { Component } from 'react';
-import { NativeModules, View, Text, requireNativeComponent } from 'react-native';
+import {
+  DeviceEventEmitter,
+  NativeModules,
+  requireNativeComponent,
+} from 'react-native';
 
 const { ZebraScannerModule } = NativeModules;
 
 const Scanner = requireNativeComponent('ZebraScanner', Zebra, {nativeOnly: {
-  testID: true,
-  renderToHardwareTextureAndroid: true,
-  accessibilityLabel: true,
-  importantForAccessibility: true,
-  accessibilityLiveRegion: true,
-  accessibilityComponentType: true,
   onLayout: true
 }});
 
 export default class Zebra extends Component {
+  componentWillMount() {
+    this.addOnCodeReadListener(this.props.onCodeRead);
+  }
+
+  componentWillUnmount() {
+    this.removeOnCodeReadListener();
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { onCodeRead } = this.props
+    if (onCodeRead !== newProps.onCodeRead) {
+      this.addOnCodeReadListener(newProps.onCodeRead);
+    }
+  }
+
+  addOnCodeReadListener(callback) {
+    this.removeOnCodeReadListener();
+    if (callback) {
+      this.onCodeRead = DeviceEventEmitter.addListener('onCodeReadAndroid', callback);
+    }
+  }
+
+  removeOnCodeReadListener() {
+    if (this.onCodeRead) {
+      this.onCodeRead.remove();
+      this.onCodeRead = null;
+    }
+  }
+
   render() {
     return (
       <Scanner style={{ flex: 1 }}>

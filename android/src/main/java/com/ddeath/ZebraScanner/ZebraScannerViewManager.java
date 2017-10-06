@@ -22,9 +22,4 @@ public class ZebraScannerViewManager extends ViewGroupManager<ZebraScannerView> 
     public ZebraScannerView createViewInstance(ThemedReactContext context) {
         return new ZebraScannerView(context);
     }
-
-    @ReactProp(name = "onCodeRead")
-    public void setAspect(ZebraScannerView view, final Callback callback) {
-        view.setOnCodeRead(callback);
-    }
 }

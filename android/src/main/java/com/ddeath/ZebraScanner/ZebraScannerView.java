@@ -11,7 +11,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.FrameLayout;
 
-import com.facebook.react.bridge.Callback;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
@@ -28,8 +28,6 @@ public class ZebraScannerView extends ViewGroup {
     private Handler autoFocusHandler;
 
     private ImageScanner scanner;
-
-    private Callback onCodeRead = null;
 
     private boolean barcodeScanned = false;
     private boolean previewing = true;
@@ -78,10 +76,6 @@ public class ZebraScannerView extends ViewGroup {
     @Override
     protected void onDetachedFromWindow() {
         releaseCamera();
-    }
-
-    public void setOnCodeRead(final Callback callback) {
-        this.onCodeRead = callback;
     }
 
     /**
@@ -163,9 +157,8 @@ public class ZebraScannerView extends ViewGroup {
 
     private void processScanResult(String message)
     {
-        if (this.onCodeRead != null) {
-            this.onCodeRead.invoke(message);
-        }
+        ReactContext reactContext = ZebraScannerModule.getReactContextSingleton();
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onCodeReadAndroid", message);
     }
 
     private void restartScanner()
