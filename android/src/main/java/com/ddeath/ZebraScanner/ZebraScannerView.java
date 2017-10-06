@@ -97,6 +97,7 @@ public class ZebraScannerView extends ViewGroup {
 
     public void setResumeScanOnTouch(boolean resumeScanOnTouch) {
         this.resumeScanOnTouch = resumeScanOnTouch;
+        this.mPreview.setResumeScanOnTouch(resumeScanOnTouch);
     }
 
     /**
@@ -180,16 +181,5 @@ public class ZebraScannerView extends ViewGroup {
     {
         ReactContext reactContext = ZebraScannerModule.getReactContextSingleton();
         reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onCodeReadAndroid", message);
-    }
-
-    private void restartScanner()
-    {
-        if (barcodeScanned) {
-            barcodeScanned = false;
-            mCamera.setPreviewCallback(previewCb);
-            mCamera.startPreview();
-            previewing = true;
-            mCamera.autoFocus(autoFocusCB);
-        }
     }
 }

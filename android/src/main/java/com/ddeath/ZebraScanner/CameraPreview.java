@@ -14,6 +14,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private Camera.PreviewCallback previewCallback;
     private Camera.AutoFocusCallback autoFocusCallback;
 
+    private boolean resumeScanOnTouch = true;
+
     public CameraPreview(Context context, Camera camera,
                          Camera.PreviewCallback previewCb,
                          Camera.AutoFocusCallback autoFocusCb) {
@@ -75,5 +77,23 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
 
+    }
+
+    public onTouchEvent(MotionEvent event) {
+        if (resumeScanOnTouch) {
+            restartScanner();
+        }
+    }
+
+    public void setResumeScanOnTouch(boolean resumeScanOnTouch) {
+        this.resumeScanOnTouch = resumeScanOnTouch;
+    }
+
+    private void restartScanner()
+    {
+        mCamera.setPreviewCallback(previewCallback);
+        mCamera.startPreview();
+        previewing = true;
+        mCamera.autoFocus(autoFocusCallback);
     }
 }
