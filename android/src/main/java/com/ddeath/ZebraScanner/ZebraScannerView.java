@@ -35,6 +35,9 @@ public class ZebraScannerView extends ViewGroup {
     private boolean invalid_code = false;
     private boolean pauseOnCodeScan = true;
     private boolean resumeScanOnTouch = true;
+    private boolean allowDuplicateScan = true;
+
+    private String lastScan = "";
 
     private final Context zebraContext;
 
@@ -88,6 +91,11 @@ public class ZebraScannerView extends ViewGroup {
     public void setResumeScanOnTouch(boolean resumeScanOnTouch) {
         this.resumeScanOnTouch = resumeScanOnTouch;
         this.mPreview.setResumeScanOnTouch(resumeScanOnTouch);
+    }
+
+    private void setAllowDuplicateScan(boolean allowDuplicateScan)
+    {
+        this.allowDuplicateScan = allowDuplicateScan;
     }
 
     /**
@@ -169,7 +177,10 @@ public class ZebraScannerView extends ViewGroup {
 
     private void processScanResult(String message)
     {
-        ReactContext reactContext = ZebraScannerModule.getReactContextSingleton();
-        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onCodeReadAndroid", message);
+        if (message != this.lastScan || this.allowDuplicateScan) {
+            ReactContext reactContext = ZebraScannerModule.getReactContextSingleton();
+            reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onCodeReadAndroid", message);
+            this.lastScan = message;
+        }
     }
 }

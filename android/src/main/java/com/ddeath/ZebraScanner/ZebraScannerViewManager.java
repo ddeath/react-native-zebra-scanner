@@ -32,4 +32,9 @@ public class ZebraScannerViewManager extends ViewGroupManager<ZebraScannerView> 
     public void setResumeScanOnTouch(ZebraScannerView view, boolean resumeScanOnTouch) {
         view.setResumeScanOnTouch(resumeScanOnTouch);
     }
+
+    @ReactProp(name = "allowDuplicateScan")
+    public void setAllowDuplicateScan(ZebraScannerView view, boolean allowDuplicateScan) {
+        view.setAllowDuplicateScan(allowDuplicateScan);
+    }
 }
