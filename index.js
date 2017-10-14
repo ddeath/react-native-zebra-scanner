@@ -41,12 +41,21 @@ export default class Zebra extends Component {
     }
   }
 
+  static defaultProps = {
+    allowDuplicateScan: true,
+    resumeScanOnTouch: true,
+    pauseOnCodeScan: true,
+  };
+
   render() {
     const { children } = this.props;
 
     const style = this.props.style || { flex: 1 };
     return (
-      <Scanner style={style}>
+      <Scanner
+        style={style}
+        { ...this.props }
+      >
         {children}
       </Scanner>
     );
