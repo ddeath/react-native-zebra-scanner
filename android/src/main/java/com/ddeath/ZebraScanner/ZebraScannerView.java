@@ -93,7 +93,7 @@ public class ZebraScannerView extends ViewGroup {
         this.mPreview.setResumeScanOnTouch(resumeScanOnTouch);
     }
 
-    private void setAllowDuplicateScan(boolean allowDuplicateScan)
+    public void setAllowDuplicateScan(boolean allowDuplicateScan)
     {
         this.allowDuplicateScan = allowDuplicateScan;
     }
