@@ -92,6 +92,11 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         this.resumeScanOnTouch = resumeScanOnTouch;
     }
 
+    public void setNewCamera(Camera camera) {
+        this.mCamera = camera;
+        restartScanner();
+    }
+
     private void restartScanner()
     {
         mCamera.setPreviewCallback(previewCallback);

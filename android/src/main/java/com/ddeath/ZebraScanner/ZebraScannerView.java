@@ -80,6 +80,12 @@ public class ZebraScannerView extends ViewGroup {
     }
 
     @Override
+    protected onAttachedToWindow() {
+        mCamera = getCameraInstance();
+        mPreview.setNewCamera(mCamera);
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         releaseCamera();
     }
