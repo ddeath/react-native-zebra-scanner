@@ -95,7 +95,6 @@ public class ZebraScannerView extends ViewGroup {
 
     public void setAllowDuplicateScan(boolean allowDuplicateScan)
     {
-        Log.i("zebra", String.valueOf(allowDuplicateScan));
         this.allowDuplicateScan = allowDuplicateScan;
     }
 
@@ -178,8 +177,7 @@ public class ZebraScannerView extends ViewGroup {
 
     private void processScanResult(String message)
     {
-        if (message != this.lastScan || this.allowDuplicateScan) {
-            Log.i("zebra", message);
+        if (!message.equals(this.lastScan) || this.allowDuplicateScan) {
             ReactContext reactContext = ZebraScannerModule.getReactContextSingleton();
             reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onCodeReadAndroid", message);
             this.lastScan = message;
