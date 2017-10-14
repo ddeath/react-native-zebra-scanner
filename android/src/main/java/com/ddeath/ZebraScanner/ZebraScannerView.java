@@ -47,18 +47,13 @@ public class ZebraScannerView extends ViewGroup {
         this.zebraContext = context;
 
         autoFocusHandler = new Handler();
-        mCamera = getCameraInstance();
 
         // Instance barcode scanner
         scanner = new ImageScanner();
         scanner.setConfig(0, Config.X_DENSITY, 3);
         scanner.setConfig(0, Config.Y_DENSITY, 3);
-        
 
-        mPreview = new CameraPreview(context, mCamera, previewCb,
-                autoFocusCB);
-        addView(mPreview, 200, 200);
-        mCamera.startPreview();
+        recreateCamera();
     }
 
     @Override
@@ -82,13 +77,7 @@ public class ZebraScannerView extends ViewGroup {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (mCamera == null) {
-            mCamera = getCameraInstance();
-            mPreview = new CameraPreview(zebraContext, mCamera, previewCb,
-                    autoFocusCB);
-            addView(mPreview, 200, 200);
-            mCamera.startPreview();
-        }
+        recreateCamera();
     }
 
     @Override
@@ -185,6 +174,16 @@ public class ZebraScannerView extends ViewGroup {
 
     private int getDeviceOrientation(Context context) {
         return ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getOrientation();
+    }
+
+    private void recreateCamera() {
+        if (mCamera == null) {
+            mCamera = getCameraInstance();
+            mPreview = new CameraPreview(zebraContext, mCamera, previewCb,
+                    autoFocusCB);
+            addView(mPreview, 200, 200);
+            mCamera.startPreview();
+        }
     }
 
 
