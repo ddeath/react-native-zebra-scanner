@@ -81,6 +81,7 @@ public class ZebraScannerView extends ViewGroup {
 
     @Override
     protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
         if (mCamera == null) {
             mCamera = getCameraInstance();
             mPreview = new CameraPreview(zebraContext, mCamera, previewCb,
