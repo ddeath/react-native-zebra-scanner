@@ -180,7 +180,11 @@ public class ZebraScannerView extends ViewGroup {
     private void recreateCamera() {
         if (mCamera == null) {
             mCamera = getCameraInstance();
-            mCamera.reconnect();
+            try {
+                mCamera.reconnect();   
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
             mPreview = new CameraPreview(zebraContext, mCamera, previewCb,
                     autoFocusCB);
             addView(mPreview, 200, 200);
