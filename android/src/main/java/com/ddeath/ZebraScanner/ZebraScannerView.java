@@ -50,8 +50,8 @@ public class ZebraScannerView extends ViewGroup {
 
         // Instance barcode scanner
         scanner = new ImageScanner();
-        scanner.setConfig(0, Config.X_DENSITY, 3);
-        scanner.setConfig(0, Config.Y_DENSITY, 3);
+        scanner.setConfig(Symbol.QRCODE, Config.X_DENSITY, 3);
+        scanner.setConfig(Symbol.QRCODE, Config.Y_DENSITY, 3);
 
         recreateCamera();
     }
