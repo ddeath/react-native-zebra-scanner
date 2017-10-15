@@ -43,8 +43,8 @@ export default class Zebra extends Component {
 
   static defaultProps = {
     allowDuplicateScan: true,
-    resumeScanOnTouch: true,
-    pauseOnCodeScan: true,
+    resumeScanOnTouch: false,
+    pauseOnCodeScan: false,
   };
 
   render() {
