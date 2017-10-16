@@ -120,11 +120,11 @@ public class ZebraScannerView extends ViewGroup {
     {
         if (mCamera != null)
         {
-            //previewing = false;
-            //mCamera.setPreviewCallback(null);
-            //mPreview.getHolder().removeCallback(mPreview);
-            //mCamera.release();
-            //mCamera = null;
+            previewing = false;
+            mCamera.setPreviewCallback(null);
+            mPreview.getHolder().removeCallback(mPreview);
+            mCamera.release();
+            mCamera = null;
         }
     }
 
@@ -180,11 +180,6 @@ public class ZebraScannerView extends ViewGroup {
     private void recreateCamera() {
         if (mCamera == null) {
             mCamera = getCameraInstance();
-            try {
-                mCamera.reconnect();   
-            } catch (Exception e) {
-                //TODO: handle exception
-            }
             mPreview = new CameraPreview(zebraContext, mCamera, previewCb,
                     autoFocusCB);
             addView(mPreview, 200, 200);

@@ -94,11 +94,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     private void restartScanner()
     {
-        try {
-            mCamera.reconnect();
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
         mCamera.setPreviewCallback(previewCallback);
         mCamera.startPreview();
         mCamera.autoFocus(autoFocusCallback);
