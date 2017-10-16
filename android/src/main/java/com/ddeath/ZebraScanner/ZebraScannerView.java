@@ -122,9 +122,9 @@ public class ZebraScannerView extends ViewGroup {
         {
             previewing = false;
             mCamera.setPreviewCallback(null);
-            mPreview.getHolder().removeCallback(mPreview);
-            mCamera.release();
-            mCamera = null;
+            //mPreview.getHolder().removeCallback(mPreview);
+            //mCamera.release();
+            //mCamera = null;
         }
     }
 
