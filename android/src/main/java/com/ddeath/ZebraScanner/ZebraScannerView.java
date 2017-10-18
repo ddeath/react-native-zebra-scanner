@@ -131,7 +131,11 @@ public class ZebraScannerView extends ViewGroup {
     private Runnable doAutoFocus = new Runnable() {
         public void run() {
             if (previewing) {
-                mCamera.autoFocus(autoFocusCB);
+                try {
+                    mCamera.autoFocus(autoFocusCB);
+                } catch (Exception e) {
+                    // will do autofocus later
+                }
             }
         }
     };
