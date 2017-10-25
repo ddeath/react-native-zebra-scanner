@@ -142,10 +142,7 @@ public class ZebraScannerView extends ViewGroup {
 
     Camera.PreviewCallback previewCb = new Camera.PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
-            Camera.Parameters parameters = camera.getParameters();
-            Camera.Size size = parameters.getPreviewSize();
-
-            Image barcode = new Image(720, 1280, "Y800");
+            Image barcode = new Image(600, 1000, "Y800");
             barcode.setData(data);
 
             int result = scanner.scanImage(barcode);
