@@ -142,30 +142,34 @@ public class ZebraScannerView extends ViewGroup {
 
     Camera.PreviewCallback previewCb = new Camera.PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
-            Camera.Parameters parameters = camera.getParameters();
-            Camera.Size size = parameters.getPreviewSize();
+            try {
+                Camera.Parameters parameters = camera.getParameters();
+                Camera.Size size = parameters.getPreviewSize();
 
-            Image barcode = new Image(size.width, size.height, "Y800");
-            barcode.setData(data);
+                Image barcode = new Image(size.width, size.height, "Y800");
+                barcode.setData(data);
 
-            int result = scanner.scanImage(barcode);
+                int result = scanner.scanImage(barcode);
 
-            if (result != 0) {
-                if (pauseOnCodeScan) {
-                    previewing = false;
-                    mCamera.setPreviewCallback(null);
-                    mCamera.stopPreview();
+                if (result != 0) {
+                    if (pauseOnCodeScan) {
+                        previewing = false;
+                        mCamera.setPreviewCallback(null);
+                        mCamera.stopPreview();
+                    }
+
+                    SymbolSet syms = scanner.getResults();
+                    for (Symbol sym : syms) {
+                        String scanResult = sym.getData().trim();
+
+                        processScanResult(scanResult);
+                        barcodeScanned = true;
+
+                        break;
+                    }
                 }
+            } catch (Exception e) {
 
-                SymbolSet syms = scanner.getResults();
-                for (Symbol sym : syms) {
-                    String scanResult = sym.getData().trim();
-
-                    processScanResult(scanResult);
-                    barcodeScanned = true;
-
-                    break;
-                }
             }
         }
     };
