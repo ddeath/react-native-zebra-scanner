@@ -36,6 +36,8 @@ public class ZebraScannerView extends ViewGroup {
     private boolean pauseOnCodeScan = true;
     private boolean resumeScanOnTouch = true;
     private boolean allowDuplicateScan = true;
+    private Integer width = 0;
+    private Integer height = 0;
 
     private String lastScan = "";
 
@@ -142,7 +144,16 @@ public class ZebraScannerView extends ViewGroup {
 
     Camera.PreviewCallback previewCb = new Camera.PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
-            Image barcode = new Image(600, 1000, "Y800");
+            try {
+                Camera.Parameters parameters = camera.getParameters();
+                Camera.Size size = parameters.getPreviewSize();
+
+                width = size.width;
+                height = size.height;
+            } catch (Exception e) {
+
+            }
+            Image barcode = new Image(width, height, "Y800");
             barcode.setData(data);
 
             int result = scanner.scanImage(barcode);
